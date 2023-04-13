@@ -57,6 +57,7 @@ class CaracterController extends Controller
         // Descargar el archivo Excel
         return Storage::download($archivo);
     }
+
     public function filterCharacters(Request $request){
         
         $client = new Client();
@@ -75,9 +76,9 @@ class CaracterController extends Controller
         }
         $response = $client->request('GET', $url, ['verify' => false]);
         $data = json_decode($response->getBody());
-        dd($data);
-        if (empty($data->results)) {
-            return view('caracter',['error'=> 'No se encontraron personajes con los filtros especificados.']);
+        
+        if (count($data->results) == 0) {
+            return view('caracter', ['error' => 'No se encontraron episodios con los filtros proporcionados.']);
         }
         return view('caracter', ['characteres' => $data->results]);
     }

@@ -9,6 +9,7 @@
             <th>Estado</th>
             <th>Especie</th>
             <th>Género</th>
+            <th>Foto</th>
         </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>{{ $data->status }}</td>
             <td>{{ $data->species }}</td>
             <td>{{ $data->gender }}</td>
+            <td><img src="{{ $data->image }}" alt="{{$data->name}}" srcset="" width="150px" ></td>
             
         </tr>
        
